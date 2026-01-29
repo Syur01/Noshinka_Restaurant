@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* En tu archivo de estilos (ej. style.css o input.css) */
+@layer base {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Evita que aparezca scroll horizontal */
+    background-color: black;
+  }
+}
