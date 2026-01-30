@@ -1,15 +1,25 @@
-import { ViewportScroller } from '@angular/common';
+import { NgClass, ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   constructor(private scroller: ViewportScroller) {}
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  navigateTo(section: string) {
+    this.isMenuOpen = false; // Cerramos el menú al hacer click
+    this.scrollTo(section); // Llamamos a tu función de scroll existente
+  }
+
   // Idioma por defecto
   currentLang = 'en';
 
@@ -30,10 +40,10 @@ export class HeaderComponent {
       book: 'Reservar Mesa',
     },
   };
-  scrollTo(sectionId: string) {
-    this.scroller.scrollToAnchor(sectionId);
-  }
   changeLanguage(lang: string) {
     this.currentLang = lang;
   }
+  scrollTo(sectionId: string) {
+    this.scroller.scrollToAnchor(sectionId);
+  } // Función para cambiar el idioma
 }

@@ -1,0 +1,120 @@
+/* --- ADAPTACIÓN MÓVIL (SÓLO CSS) --- */
+section.relative.h-screen {
+  height: 100vh !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ajuste específico para la imagen de fondo */
+section.relative.h-screen .absolute.inset-0.z-0 img {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: cover !important; /* Esto evita que se deforme y llena todo el espacio */
+  object-position: center !important;
+}
+@media (max-width: 1150px) {
+  /* 1. Ajuste del Hero (Sección de Bienvenida) */
+  section.relative.h-screen {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 20px; /* Espacio para que el header no tape el texto */
+  }
+
+  h1.text-6xl {
+    font-size: 3.5rem !important; /* NOSHINKA más pequeño en móvil */
+    letter-spacing: 0.1em;
+  }
+
+  /* 2. Ajuste de Our Story */
+  section#Story {
+    height: auto; /* Quitamos el h-screen para que no se corte el texto */
+    padding: 60px 20px;
+  }
+
+  section#Story .grid-cols-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  /* Ajuste de los marcos decorativos en Story */
+  /* En móvil los hacemos más pequeños para que no causen scroll horizontal */
+  .translate-x-12,
+  .translate-x-6 {
+    transform: translateX(10px) translateY(10px) !important;
+    width: 100% !important;
+    max-width: 300px;
+  }
+
+  .w-\[550px\] {
+    width: 100% !important;
+    height: 400px !important; /* Imagen de la carta más baja en móvil */
+  }
+
+  h2.text-5xl {
+    font-size: 2.5rem !important;
+    line-height: 1.2;
+  }
+
+  /* 3. Ajuste del Menú */
+  section#Menu {
+    padding: 60px 20px;
+  }
+
+  /* Aseguramos que las imágenes del menú mantengan su proporción */
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+  }
+
+  /* Ajuste de textos largos en móvil */
+  p.text-\[20px\],
+  p.text-\[18px\] {
+    font-size: 16px !important;
+    line-height: 1.6;
+  }
+}
+
+/* --- OPTIMIZACIÓN DE IMÁGENES --- */
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+} /* --- SOLO PARA MÓVILES DE 560PX O MENOS --- */
+/* --- FIX PARA MARGEN BLANCO (320px a 560px) --- */
+/* --- OCULTAR IMAGEN STORY EN MÓVIL (< 580PX) --- */
+@media screen and (max-width: 580px) {
+  /* 1. Identificamos el contenedor de la imagen y lo eliminamos del flujo */
+  section#Story .relative.flex.justify-center.items-center,
+  section#Story .w-\[550px\],
+  section#Story .bg-zinc-900,
+  section#Story .border {
+    display: none !important;
+  }
+
+  /* 2. Ajustamos la sección para que el texto sea el protagonista */
+  section#Story {
+    height: auto !important;
+    padding: 60px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* 3. Aseguramos que el contenedor de texto ocupe todo el ancho */
+  section#Story .max-w-xl,
+  section#Story .space-y-8 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* 4. Centramos la línea naranja y el enlace final */
+  section#Story .w-12.h-\[1px\],
+  section#Story a.story-link {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+  }
+}

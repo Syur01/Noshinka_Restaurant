@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+<!-- esto va en la carta por si queremos mas oscuro -->
+ <div class="absolute inset-0 z-0">
+                                <img src="carta_img.png" alt="Noshinka Fusion Japan Peru"
+                                    class="w-full h-full object-cover  group-hover:opacity-80 transition-opacity duration-700" />
+                                <!-- Img de carta sin fondo oscuro -->
+                                <div class="absolute  bg-gradient-to-t from-black via-transparent to-black/40">
+                                    <!-- Img de carta con fondo oscuro -->
+                                    <!-- <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"> -->
+                                </div>
+                            </div>
