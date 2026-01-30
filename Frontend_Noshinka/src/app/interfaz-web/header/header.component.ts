@@ -41,7 +41,8 @@ export class HeaderComponent {
     },
   };
   changeLanguage(lang: string) {
-    this.currentLang = lang;
+    localStorage.setItem('idioma', lang); // Guarda la nota
+    window.location.reload(); // Recarga para que todos lean la nota
   }
   scrollTo(sectionId: string) {
     this.scroller.scrollToAnchor(sectionId);
