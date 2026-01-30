@@ -6,7 +6,7 @@
             <div class="space-y-6">
                 <h2 class="font-serif text-3xl tracking-widest text-[#ffffff]">NIKKŌ</h2>
                 <p class="text-gray-400 text-[15px] leading-relaxed max-w-xs">
-                    A celebration of Nikkei cuisine — where the artistry of Japan meets the vibrant soul of Peru.
+                    {{ textos[currentLang].desc }}
                 </p>
                 <div class="flex gap-4 pt-4">
                     <a href="#"
@@ -17,25 +17,29 @@
             </div>
 
             <div class="space-y-6">
-                <h4 class="text-[15px] uppercase tracking-[0.4em] text-gray-500 font-bold">Hours</h4>
+                <h4 class="text-[15px] uppercase tracking-[0.4em] text-gray-500 font-bold">
+                    {{ textos[currentLang].hours }}
+                </h4>
                 <div class="text-sm space-y-4">
                     <div>
-                        <p class="text-gray-500 text-[15px]">Tuesday – Thursday</p>
+                        <p class="text-gray-500 text-[15px]">{{ textos[currentLang].days1 }}</p>
                         <p class="text-white">6:00 PM – 10:00 PM</p>
                     </div>
                     <div>
-                        <p class="text-gray-500 text-[15px]">Friday – Saturday</p>
+                        <p class="text-gray-500 text-[15px]">{{ textos[currentLang].days2 }}</p>
                         <p class="text-white">6:00 PM – 11:00 PM</p>
                     </div>
                     <div>
-                        <p class="text-gray-500 text-[15px]">Sunday – Monday</p>
-                        <p class="text-[#c15a2e] text-[15px] font-medium">Closed</p>
+                        <p class="text-gray-500 text-[15px]">{{ textos[currentLang].days3 }}</p>
+                        <p class="text-[#c15a2e] text-[15px] font-medium">{{ textos[currentLang].closed }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="space-y-6">
-                <h4 class="text-[15px] uppercase tracking-[0.4em] text-gray-500 font-bold">Contact</h4>
+                <h4 class="text-[15px] uppercase tracking-[0.4em] text-gray-500 font-bold">
+                    {{ textos[currentLang].contact }}
+                </h4>
                 <div class="text-sm space-y-4 text-gray-400">
                     <p class="leading-relaxed text-[15px]">123 Fusion Avenue<br>San Francisco, CA 94102</p>
                     <p class="text-[#c15a2e] text-[15px] font-medium">(555) 123-4567</p>
@@ -47,10 +51,10 @@
 
         <div
             class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[15px] text-gray-600 tracking-widest">
-            <p>© 2025 NIKKŌ. ALL RIGHTS RESERVED.</p>
+            <p>© 2025 NIKKŌ. {{ textos[currentLang].rights }}</p>
             <div class="flex gap-8 uppercase">
-                <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">{{ textos[currentLang].privacy }}</a>
+                <a href="#" class="hover:text-white transition-colors">{{ textos[currentLang].terms }}</a>
             </div>
         </div>
 

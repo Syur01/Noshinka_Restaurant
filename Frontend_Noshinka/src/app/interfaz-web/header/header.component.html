@@ -1,30 +1,55 @@
 <header
   class="fixed top-0 left-0 z-50 w-full px-6 py-6 md:px-16 flex items-center justify-between bg-black/90 backdrop-blur-sm border-b border-white/5">
-  <div class="text-2xl md:text-3xl font-serif tracking-[0.3em] text-white">
+
+  <button (click)="scrollTo('top')"
+    class="text-2xl md:text-3xl font-serif tracking-[0.3em] text-white hover:opacity-80 transition-opacity focus:outline-none">
     NOSHINKA
-  </div>
-  <button (click)="toggleMenu()" class="text-[#c15a2e] text-3xl md:hidden z-[60]">
-    {{ isMenuOpen ? '✕' : '☰' }}
   </button>
-  <nav [ngClass]="{'flex': isMenuOpen, 'hidden md:flex': !isMenuOpen}" class="fixed inset-0 w-full h-screen bg-black/98 flex-col items-center justify-center space-y-10
+
+  <nav [ngClass]="{'flex': isMenuOpen, 'nav-escritorio': !isMenuOpen}" class="fixed inset-0 w-full h-screen bg-black/98 flex-col items-center justify-center space-y-10
            md:space-y-0 md:static md:h-auto md:w-auto md:bg-transparent
-           md:flex-row md:space-x-10 text-[13px] uppercase tracking-[0.2em] z-50">
-    <a (click)="scrollTo('Story'); toggleMenu()"
-      class="text-orange-200 transition-colors duration-300 cursor-pointer">Our Story</a>
-    <a (click)="scrollTo('Menu'); toggleMenu()"
-      class="text-orange-200 transition-colors duration-300 cursor-pointer">Menu</a>
+           md:flex-row md:space-x-4 md:items-center text-[13px] uppercase tracking-[0.2em] z-50">
+
+    <a (click)="scrollTo('Story'); toggleMenu()" class="text-orange-200 transition-colors duration-300 cursor-pointer">
+      {{ textos[currentLang].story }}
+    </a>
+    <a (click)="scrollTo('Menu'); toggleMenu()" class="text-orange-200 transition-colors duration-300 cursor-pointer">
+      {{ textos[currentLang].menu }}
+    </a>
     <a (click)="scrollTo('Reservation'); toggleMenu()"
-      class="text-orange-200 transition-colors duration-300 cursor-pointer">Reservations</a>
+      class="text-orange-200 transition-colors duration-300 cursor-pointer">
+      {{ textos[currentLang].reservations }}
+    </a>
     <a (click)="scrollTo('Contact'); toggleMenu()"
-      class="text-orange-200 transition-colors duration-300 cursor-pointer">Contact</a>
+      class="text-orange-200 transition-colors duration-300 cursor-pointer">
+      {{ textos[currentLang].contact }}
+    </a>
+
     <button (click)="scrollTo('Reservation'); toggleMenu()"
       class="md:hidden mt-8 text-[#c15a2e] text-2xl uppercase tracking-[0.3em] font-serif">
-      Book a Table
+      {{ textos[currentLang].book }}
     </button>
   </nav>
-  <button (click)="scrollTo('Reservation')" class="hidden md:block border border-[#c15a2e]/60 px-6 py-2.5 text-[15px]
-           uppercase tracking-[0.2em] text-[#c15a2e]
-           hover:bg-[#c15a2e] hover:text-white transition-all duration-500">
-    Book a Table
-  </button>
+
+  <div class="flex items-center gap-4">
+
+    <div class="flex gap-2 text-[12px] uppercase z-[70]">
+      <button (click)="changeLanguage('en')" [class.font-bold]="currentLang==='en'"
+        class="text-[#c15a2e] hover:text-white transition-colors focus:outline-none">EN</button>
+      <span id="lang-separator" class="text-white">|</span>
+      <button (click)="changeLanguage('es')" [class.font-bold]="currentLang==='es'"
+        class="text-[#c15a2e] hover:text-white transition-colors focus:outline-none">ES</button>
+    </div>
+
+    <div class="bloque-derecho items-center">
+      <button (click)="scrollTo('Reservation')"
+        class="border border-[#c15a2e]/60 px-6 py-2.5 text-[15px] uppercase tracking-[0.2em] text-[#c15a2e] hover:bg-[#c15a2e] hover:text-white transition-all duration-500">
+        {{ textos[currentLang].book }}
+      </button>
+    </div>
+
+    <button (click)="toggleMenu()" class="btn-movil text-[#c15a2e] text-3xl z-[70] focus:outline-none">
+      {{ isMenuOpen ? '✕' : '☰' }}
+    </button>
+  </div>
 </header>

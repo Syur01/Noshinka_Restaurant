@@ -1,26 +1,57 @@
-@media (max-width: 1150px) {
-  header nav:not(.flex) {
+/* =========================================
+   1. ESTADOS INICIALES (ESCRITORIO > 1150px)
+   ========================================= */
+body {
+  padding-top: 70px;
+}
+
+.btn-movil {
+  display: none !important;
+}
+
+.nav-escritorio {
+  display: flex !important;
+}
+
+.bloque-derecho {
+  display: flex !important;
+}
+
+/* =========================================
+   2. MODO MÓVIL / TABLET (MÁX 1150px)
+   ========================================= */
+@media screen and (max-width: 1150px) {
+  /* Mostrar hamburguesa y ocultar elementos de PC */
+  .btn-movil {
+    display: flex !important;
+  }
+
+  .nav-escritorio,
+  .bloque-derecho {
     display: none !important;
   }
 
-  header button.md\:hidden {
-    display: block !important;
-  }
-
-  header > button:last-of-type {
-    display: none !important;
-  }
+  /* Evitar scroll cuando el menú está abierto */
   :host-context(body:has(nav.flex)) {
     overflow: hidden;
   }
+
+  /* Estilo del Menú Pantalla Completa (Abierto) */
   header nav.flex {
     display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.98) !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 0 !important;
+    z-index: 50 !important;
+    animation: fadeIn 0.3s ease;
   }
 
+  /* Links dentro del menú abierto */
   header nav.flex a {
     display: block !important;
     margin: 15px 0 !important;
@@ -32,10 +63,9 @@
     color: white !important;
   }
 
+  /* Botón "Book a Table" dentro del menú abierto */
   header nav.flex button {
     display: block !important;
-    visibility: visible !important;
-
     background: transparent !important;
     border: none !important;
     color: #c15a2e !important;
@@ -43,119 +73,76 @@
     font-size: 2rem !important;
     text-transform: uppercase !important;
     letter-spacing: 0.3em !important;
-
     margin-top: 20px !important;
-    cursor: pointer !important;
     width: 100% !important;
-    text-align: center !important;
   }
 
-  header nav.flex button:active {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  header nav.flex {
-    display: flex !important;
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    background: rgba(0, 0, 0, 0.95);
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    z-index: 50 !important;
-    animation: fadeIn 0.3s ease;
-  }
-
+  /* Asegurar que el botón de cerrar y logo queden por encima */
   header button,
   header div {
     z-index: 60 !important;
   }
 }
 
+/* =========================================
+   3. AJUSTES PARA PANTALLAS PEQUEÑAS (< 580px)
+   ========================================= */
+@media screen and (max-width: 580px) {
+  header button.font-serif {
+    font-size: 1.5rem !important; /* Logo más grande */
+    letter-spacing: 0.4em !important; /* Más elegante al ser grande */
+  }
+  .flex.gap-2.text-\[12px\] {
+    font-size: 10px !important;
+    gap: 4px !important;
+  }
+  #lang-separator {
+    margin-top: 5px;
+  }
+  header {
+    padding: 15px 20px !important;
+  }
+
+  header div.text-2xl {
+    font-size: 1.1rem !important;
+  }
+
+  /* Ajuste de botones generales sin ocultar la hamburguesa */
+  header button:not(.btn-movil) {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+
+/* Especial para móviles muy pequeños */
+@media screen and (max-width: 425px) {
+  .btn-movil {
+    font-size: 40px !important;
+  }
+
+  header nav.flex a {
+    font-size: 1.4rem !important;
+  }
+
+  header div.text-2xl {
+    font-size: 1rem !important;
+  }
+}
+@media screen and (max-width: 380px) {
+  header button.font-serif {
+    font-size: 1.2rem !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+/* =========================================
+   4. ANIMACIONES
+   ========================================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-@media screen and (max-width: 580px) {
-  header {
-    padding: 15px 20px !important;
-  }
-  header div.text-2xl {
-    font-size: 1.1rem !important;
-  }
-
-  header button {
-    padding: 8px 12px !important;
-    font-size: 10px !important;
-    letter-spacing: 0.1em !important;
-    white-space: nowrap;
-    border-color: rgba(193, 90, 46, 0.4) !important;
-  }
-
-  header nav {
-    display: none !important;
-  }
-
-  .text-gray-500.text-xs {
-    display: none !important;
-  }
-}
-
-body {
-  padding-top: 70px;
-}
-@media screen and (min-width: 425px) and (max-width: 580px) {
-  header button.z-\[60\],
-  header button.md\:hidden {
-    font-size: 40px !important;
-    padding: 0 !important;
-    line-height: 1 !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-
-  header div.text-2xl {
-    font-size: 1.2rem !important;
-  }
-}
-@media screen and (max-width: 425px) {
-  header button.z-\[60\],
-  header button.md\:hidden {
-    font-size: 40px !important;
-    padding: 5px !important;
-  }
-
-  header nav.flex a {
-    font-size: 1.4rem !important;
-    letter-spacing: 0.2em !important;
-    margin: 10px 0 !important;
-  }
-
-  header nav.flex button {
-    padding: 10px 30px !important;
-    font-size: 14px !important;
-    margin-top: 20px !important;
-  }
-
-  header div.text-2xl {
-    font-size: 1rem !important;
   }
 }
