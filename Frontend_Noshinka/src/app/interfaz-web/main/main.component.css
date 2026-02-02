@@ -1,25 +1,49 @@
 /* --- ADAPTACIÓN MÓVIL (SÓLO CSS) --- */
 section.relative.h-screen {
-  height: 100vh !important;
+  width: 100%;
+  height: 100vh !important; /* Forzamos a que siempre sea el alto de la pantalla */
   position: relative;
   overflow: hidden;
 }
-
+section.relative.h-screen .absolute.inset-0.z-0 {
+  height: 100% !important;
+  width: 100% !important;
+} /* 2. Fix para la imagen de Story */
+#story-img-container img {
+  display: block !important;
+  object-fit: cover !important;
+  height: 100% !important;
+}
 /* Ajuste específico para la imagen de fondo */
 section.relative.h-screen .absolute.inset-0.z-0 img {
-  width: 100vw !important;
-  height: 100vh !important;
-  object-fit: cover !important; /* Esto evita que se deforme y llena todo el espacio */
-  object-position: center !important;
+  min-height: 100% !important;
+  min-width: 100% !important;
+  object-fit: cover !important;
+}
+.menu-img-container {
+  background-color: transparent !important; /* Quita el fondo negro si la imagen no carga */
+  display: flex !important;
+}
+
+.menu-img-container img {
+  display: block !important; /* <--- Vital para eliminar la franja negra */
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 @media (max-width: 1150px) {
   /* 1. Ajuste del Hero (Sección de Bienvenida) */
   section.relative.h-screen {
-    height: auto;
+    height: 100vh !important;
     min-height: 100vh;
-    padding: 100px 20px; /* Espacio para que el header no tape el texto */
+    padding: 0; /* Quitamos el padding que empuja la imagen hacia abajo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
+  section.relative.h-screen .relative.z-10 {
+    margin-top: 80px;
+  }
   h1.text-6xl {
     font-size: 3.5rem !important; /* NOSHINKA más pequeño en móvil */
     letter-spacing: 0.1em;
@@ -60,11 +84,17 @@ section.relative.h-screen .absolute.inset-0.z-0 img {
   section#Menu {
     padding: 60px 20px;
   }
-
-  /* Aseguramos que las imágenes del menú mantengan su proporción */
   .aspect-square {
-    aspect-ratio: 1 / 1;
+    background: transparent !important; /* Evita que el fondo del contenedor se vea */
+    overflow: hidden;
+    display: flex; /* Ayuda a alinear la imagen perfectamente */
+  }
+  /* Aseguramos que las imágenes del menú mantengan su proporción */
+  .aspect-square img {
     width: 100%;
+    height: 100%;
+    object-fit: cover !important; /* Cortará los bordes de la foto para llenar el cuadrado */
+    display: block;
   }
 
   /* Ajuste de textos largos en móvil */
